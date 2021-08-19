@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.media.motiondetect" version="0.9.0" name="Motion-Detect Media Player" provider-name="leo-c">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="virtual.rpi-tools" version="9.0.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="addon.py">
+	<provides>video audio</provides>
+  </extension> 
+  <extension point="xbmc.addon.metadata">
+	<summary>Motion-Detect Media Player</summary>
+	<summary lang="it">Media Player a rilevamento di movimento</summary>
+	<description>Start a video or audio content after motion detection (can show a media in idle state). Runs on Raspberry Pi using Ultrasonic or PIR Sensors</description>
+	<description lang="it">Avvia un contenuto video o audio un dopo un rilevamento di movimento (può mostrare un contenuto quando in attesa). Gira su Raspberry Pi con Sensore Ultrasonico o PIR</description>
+	<language>en it</language>
+    <platform>linux</platform>
+	<source>http://github.com/leo-c/script.media.motiondetect/tree/leia</source>
+	<assets>
+	  <icon>resources/icon.png</icon>
+	</assets>
+	<news>
+v0.1.0  (2021-07-26)
+- Initial release. It works under Kodi 18
+	</news>
+  </extension> 
+</addon>

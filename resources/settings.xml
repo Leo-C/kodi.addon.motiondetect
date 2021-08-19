@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<setting label="32500" type="lsep"/>
+	<setting id="sensor_type" type="enum" label="32501" lvalues="32901|32902" default="32601" />
+	<setting id="pin_trigger" type="number" label="32502" default="23" enable="eq(-1,0)" />
+	<setting id="pin_sensor" type="number" label="32503" default="24" />
+	<setting id="play_dist" type="number" label="32504" default="50" enable="eq(-3,0)" />
+	<setting id="stop_dist" type="number" label="32505" default="150" enable="eq(-4,0)" />
+	<setting id="stop_time" type="number" label="32506" default="30" enable="eq(-5,0)" />
+	<setting id="idle_media_blank" type="bool" label="32507" default="true" />
+	<setting id="idle_media" type="file" label="32508" default="" enable="eq(-1,false)" />
+	<setting id="media" type="file" label="32509" default="" />
+	
+	<setting label="32600" type="lsep"/>
+	<setting id="test_start" type="action" label="32601" action="RunScript(script.media.motiondetect, test)" />
+	<setting id="stop" type="action" label="32602" action="StopScript(script.media.motiondetect)" />
+</settings>

@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Kodi Addons\n"
+"Report-Msgid-Bugs-To: https://github.com/leo-c\n"
+"POT-Creation-Date: 2021-07-26 12:30+02\n"
+"PO-Revision-Date: 2021-07-26 12:30+02\n"
+"Last-Translator: leo-c\n"
+"Language-Team: English (https://kodi.weblate.cloud/languages/it_it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+msgctxt "#32500"
+msgid "Sensor Settings"
+msgstr "Impostazioni Sensore"
+
+msgctxt "#32501"
+msgid "Sensor Type"
+msgstr "Tipo di Sensore"
+
+msgctxt "#32502"
+msgid "GPIO pin: Start measure"
+msgstr "GPIO pin: Avvio misurazione"
+
+msgctxt "#32503"
+msgid "GPIO pin: Sensor Input"
+msgstr "GPIO pin: Input Sensore"
+
+msgctxt "#32504"
+msgid "Distance to Start Video (10-400 cm)"
+msgstr "Distanza di partenza del Video (10-400 cm)"
+
+msgctxt "#32505"
+msgid "Distance to Stop Video (10-400 cm)"
+msgstr "Distanza di stop del Video (10-400 cm)"
+
+msgctxt "#32506"
+msgid "Stop Time (sec) when no presence is detected"
+msgstr "Tempo di Stop (sec) quando non viene rilevata presenza"
+
+msgctxt "#32507"
+msgid "Idle Media Blank"
+msgstr "Schermo di attesa nero"
+
+msgctxt "#32508"
+msgid "Idle Media Content (.mp4)"
+msgstr "Contenuto di attesa (.mp4)"
+
+msgctxt "#32509"
+msgid "Media to Play (.mp4)"
+msgstr "Contenuto da riprodurre (.mp4, .mp3)"
+
+
+msgctxt "#32600"
+msgid "Test"
+msgstr "Test"
+
+msgctxt "#32601"
+msgid "Start Test"
+msgstr "Avvia Test"
+
+msgctxt "#32602"
+msgid "Stop Addon"
+msgstr "Ferma Addon"
+
+
+#selector for Sensor Type
+
+msgctxt "#32901"
+msgid "Ultrasonic"
+msgstr "Sensore Ultrasonico"
+
+msgctxt "#32902"
+msgid "PIR"
+msgstr "Sensore ad Infrarossi"
+
+
+# strings for python
+
+msgctxt "#32701"
+msgid "Stop in %d seconds"
+msgstr "Stop fra %d secondi"
+
+msgctxt "#32702"
+msgid "No media to play"
+msgstr "Nessun contenuto impostato"
+
+msgctxt "#32703"
+msgid "Distance: %d cm"
+msgstr "Distanza: %d cm"
+
+msgctxt "#32704"
+msgid "Sensor triggered"
+msgstr "Sensore attivato"
+
+msgctxt "#32705"
+msgid "Sensor not triggered"
+msgstr "Sensore non attivato"
