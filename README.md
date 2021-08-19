@@ -37,7 +37,7 @@ If you want to start this addon at Kodi boot, I suggest to use [Kodi Autoplay Ad
 ### HC-SR04 (Ultrasonic)
 
 This Ultrasonic sensor require 5Vcc for powering, and produce output at 5V, then a simple voltage divider is needed:
-![Voltage divider](docs/Vdiv.png)
+![Voltage divider](docs/Vdiv.png)  
 (also works with 2 resistances both of 5k ohm - 10 kohm because Raspberry inputs can be driven also with 2.5 V)
 
 Luckily, sensor accept any trigger signal above 2.5V, then Raspbery can drive it directly with a 3.3V signal
