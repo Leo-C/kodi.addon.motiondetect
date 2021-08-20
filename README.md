@@ -1,4 +1,4 @@
-# Motion-Detect Media Player
+# Motion-Detect Media Player Kodi Addon
 
 ## Introduction
 
