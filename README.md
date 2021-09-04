@@ -70,7 +70,7 @@ This Addon was tested on following platforms:
 | :-------------: | :----------------------: | :------------------------: | :--: | :----: | :---- |
 | Kripton - 17.6 | LibreELEC-RPi.arm-8.2.5  | RasPi v1.2 model B+        |   N   |   -    | It seems that this addon cannot run on Kripton (tested on LE v17.6) because required Rpi-tool module (v8.2, to be manually installed) cause restart of RasPi when GPIO is activated (maybe I will do further investigations) |
 | Leia - 18.9    | LibreELEC-RPi.arm-9.2.6  | RasPi v1.2 model B+        |   Y   |  leia  | Require Rpi-Tools distributed in LibreElec Repository |
-| Matrix - 19.1  | LibreELEC-RPi.arm-9.97.1 | RasPi v4 model B with 4GB  |   N   |   -    | Now (20210819) it seems that Rpi-Tools does not exist |
+| Matrix - 19.1  | LibreELEC-RPi.arm-10.0.0 | RasPi v4 model B with 4GB  |   Y   | matrix | Require Rpi-Tools distributed in LibreElec Repository |
 
 
 ## Installation
