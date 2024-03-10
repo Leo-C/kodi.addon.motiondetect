@@ -55,15 +55,19 @@ msgstr ""
 
 
 msgctxt "#32600"
-msgid "Test"
+msgid "Control"
 msgstr ""
 
 msgctxt "#32601"
-msgid "Start Test"
+msgid "Pause"
 msgstr ""
 
 msgctxt "#32602"
-msgid "Stop Addon"
+msgid "Distance (cm)"
+msgstr ""
+
+msgctxt "#32603"
+msgid "Percentage (%)"
 msgstr ""
 
 
@@ -86,16 +90,4 @@ msgstr ""
 
 msgctxt "#32702"
 msgid "No media to play"
-msgstr ""
-
-msgctxt "#32703"
-msgid "Distance: %d cm"
-msgstr ""
-
-msgctxt "#32704"
-msgid "Sensor triggered"
-msgstr ""
-
-msgctxt "#32705"
-msgid "Sensor not triggered"
 msgstr ""

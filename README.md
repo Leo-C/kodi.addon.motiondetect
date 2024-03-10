@@ -67,13 +67,25 @@ Wiring follows:
 
 ## Compatibility
 
+Addon is evolving using different technologies:
+| Version | python version | GPIO library | Works | Notes |
+| :------ | :------------- | :----------- | :---: | :---- |
+| 0.9.x   | 2.x            | RPi.GPIO     |   N   | Standard distributions of oldest Kodi (LE < 18) do not contain RPi-Tools; manual installation of GPIO library cause restart |
+| 1.0.x   | 2.x            | RPi.GPIO     |   Y   | direct use of RPi.GPIO |
+| 1.1.x   | 3.x            | RPi.GPIO     |   Y   | direct use of RPi.GPIO |
+| 1.2.x   | 3.x            | gpiozero     |   Y   | gpiozero internally use RPi.GPIO in version 1.6.x (LE 11.x); from gpiozero 2.x (LE 12+) lgpio is used |
+
+Aside some changes for RasPi Tool Addon, major change was [HW change in RasPi5 for GPIO chip](https://www.raspberrypi.com/news/rp1-the-silicon-controlling-raspberry-pi-5-i-o-designed-here-at-raspberry-pi/), that caused a major re-design for v. 1.2.0 related with adoption of [gpiozero](https://gpiozero.readthedocs.io/en/latest/) in place of [RPi.GPIO](https://sourceforge.net/projects/raspberry-gpio-python/)
+
 This Addon was tested on following platforms:
-|  Kodi version  |       Distribution        |            HW             | Works | Branch  | Notes |
-| :------------: | :-----------------------: | :-----------------------: | :---: | :-----: | :---- |
-| Kripton - 17.6 | LibreELEC-RPi2.arm-8.2.5  | RasPi v1.2 model B+       |   N   |  -      | It seems that this addon cannot run on Kripton (tested on LE v17.6) because required Rpi-tool module (v8.2, to be manually installed) cause restart of RasPi when GPIO is activated (maybe I will do further investigations) |
-| Leia - 18.9    | LibreELEC-RPi2.arm-9.2.6  | RasPi v1.2 model B+       |   Y   |  leia   | Require Rpi-Tools (based on RPi.GPIO) - use python 2.x |
-| Matrix - 19.5  | LibreELEC-RPi4.arm-10.0.6 | RasPi v4 model B with 4GB |   Y   |  matrix | Require Rpi-Tools (based on RPi.GPIO) - use python 3.x |
-| Nexus - 20.3   | LibreELEC-RPi4.arm-11.0.4 | RasPi v4 model B with 4GB |   Y   |  nexus  | Require Rpi-Tools (based on gpiozero) - use python 3.x |
+|   Kodi version   | Distribution                                 |            HW             | Works | Version | Branch  | Notes |
+| :--------------: | :------------------------------------------: | :-----------------------: | :---: | :-----: | :-----: | :---- |
+| Kripton - 17.6   | LibreELEC-RPi2.arm-8.2.5                     | RasPi v1.2 model B+       |   N   |  0.9.x  |  -      | It seems that this addon cannot run on Kripton (tested on LE v17.6) because required Rpi-tool module (v8.2, to be manually installed) cause restart of RasPi when GPIO is activated |
+| Leia - 18.9      | LibreELEC-RPi2.arm-9.2.6                     | RasPi v1.2 model B+       |   Y   |  1.0.x  |  leia   | Rpi-Tools is installed (based on RPi.GPIO) - use python 2.x |
+| Matrix - 19.5    | LibreELEC-RPi4.arm-10.0.4                    | RasPi v4 model B with 4GB |   Y   |  1.1.x  |  matrix | Rpi-Tools is installed (based on RPi.GPIO) - use python 3.x |
+| Nexus - 20.3     | LibreELEC-RPi4.arm-11.0.6                    | RasPi v4 model B with 4GB |   Y   |  1.2.x  |  nexus  | Rpi-Tools is installed (based on gpiozero and RPi.GPIO) - use python 3.x |
+| Nexus - 20.3     | LibreELEC-RPi5.arm-11.0.6                    | RasPi v5 with 4GB         |   N   |  1.2.x  |  nexus  | GPIO is deprecated and gpiozero doesn't use gpiod (v 1.5.1), adapted for RPi5 |
+| Omega - 21.alpha | LibreELEC-RPi5.aarch64-12.0-nightly-20240205 | RasPi v5 with 4GB         |   Y   |  1.2.x  |  nexus  | Rpi-Tools is installed (based on gpiozero and lgpio) - use python 3.x |
 
 
 ## Installation

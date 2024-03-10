@@ -55,16 +55,20 @@ msgstr "Contenuto da riprodurre (.mp4, .mp3)"
 
 
 msgctxt "#32600"
-msgid "Test"
-msgstr "Test"
+msgid "Control"
+msgstr "Controllo"
 
 msgctxt "#32601"
-msgid "Start Test"
-msgstr "Avvia Test"
+msgid "Pause"
+msgstr "Pausa"
 
 msgctxt "#32602"
-msgid "Stop Addon"
-msgstr "Ferma Addon"
+msgid "Distance (cm)"
+msgstr "Distanza (cm)"
+
+msgctxt "#32603"
+msgid "Percentage (%)"
+msgstr "Percentuale (%)"
 
 
 #selector for Sensor Type
@@ -87,15 +91,3 @@ msgstr "Stop fra %d secondi"
 msgctxt "#32702"
 msgid "No media to play"
 msgstr "Nessun contenuto impostato"
-
-msgctxt "#32703"
-msgid "Distance: %d cm"
-msgstr "Distanza: %d cm"
-
-msgctxt "#32704"
-msgid "Sensor triggered"
-msgstr "Sensore attivato"
-
-msgctxt "#32705"
-msgid "Sensor not triggered"
-msgstr "Sensore non attivato"

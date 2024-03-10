@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="script.media.motiondetect" version="1.1.1" name="Motion-Detect Media Player" provider-name="leo-c">
+<addon id="service.media.motiondetect" version="1.2.0" name="Motion-Detect Media Player" provider-name="leo-c">
   <requires>
     <!-- ensure that python 3 is used -->
     <import addon="xbmc.python" version="3.0.0"/>
@@ -8,11 +8,11 @@
 	  release is increased +1 for each kodi version,
 	  but distributed version with current kodi is installed
 	-->
-    <import addon="virtual.rpi-tools" version="10.0.0"/>
+    <import addon="virtual.rpi-tools" version="11.0.0"/>
   </requires>
-  <extension point="xbmc.python.script" library="addon.py">
+  <extension point="xbmc.service" language="en" library="service.py">
 	<provides>video audio</provides>
-  </extension> 
+  </extension>
   <extension point="xbmc.addon.metadata">
 	<summary>Motion-Detect Media Player</summary>
 	<summary lang="it">Media Player a rilevamento di movimento</summary>
@@ -34,8 +34,12 @@ v1.0.0  (2021-07-26)
 v1.1.0  (2024-09-04)
 - works with python 3.x and  Kodi 19
 
-v1.1.1  (2024-02-05)
+v1.1.0  (2024-02-05)
 - minor adaptation for python 3 typing and comments
-  </news>
+
+v1.2.0  (2024-03-03)
+- works with python 3.x and  Kodi 19+
+- works also on RPi5
+	</news>
   </extension> 
 </addon>

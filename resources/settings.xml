@@ -12,6 +12,7 @@
 	<setting id="media" type="file" label="32509" default="" />
 	
 	<setting label="32600" type="lsep"/>
-	<setting id="test_start" type="action" label="32601" action="RunScript(script.media.motiondetect, test)" />
-	<setting id="stop" type="action" label="32602" action="StopScript(script.media.motiondetect)" />
+	<setting id="pause" type="bool" label="32601" default="true" enable="true" />
+	<setting id="distance" type="number" label="32602" default="" enable="false" />
+	<setting id="percentage" type="number" label="32603" default="" enable="false" />
 </settings>
