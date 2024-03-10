@@ -34,7 +34,7 @@ If you want to start this addon at Kodi boot, I suggest to use [Kodi Autoplay Ad
 
 ## Hardware
 
-### HC-SR04 (Ultrasonic)
+### HC-SR04 / SRF05 / HY-SRF05 (Ultrasonic)
 
 This Ultrasonic sensor require 5Vcc for powering, and produce output at 5V, then a simple voltage divider is needed:
 ![Voltage divider](docs/Vdiv.png)  
@@ -43,12 +43,14 @@ This Ultrasonic sensor require 5Vcc for powering, and produce output at 5V, then
 Luckily, sensor accept any trigger signal above 2.5V, then Raspbery can drive it directly with a 3.3V signal
 
 Wiring follows:
-| RasPi GPIO pin # | Raspi GPIO pin signal | HC-SR501 pin |        Notes        |
-| :--------------: | :-------------------: | :----------: | :------------------ |
-|        2         |         +5V           |     Vcc      |                     |
-|        6         |         GND           |     GND      |                     |
-|        16        |       GPIO #23        |   Trigger    |                     |
-|        18        |       GPIO #24        |    Echo      | use voltage divider |
+| RasPi GPIO pin # | Raspi GPIO pin signal | Sensor pin |        Notes        |
+| :--------------: | :-------------------: | :--------: | :------------------ |
+|        2         |         +5V           |    Vcc     |                     |
+|        6         |         GND           |    GND     |                     |
+|       16         |       GPIO #23        |  Trigger   |                     |
+|       18         |       GPIO #24        |    Echo    | use voltage divider |
+
+**WARN**: some SRF05-compatible sensors have Echo-Trigger pins swapped
 
 
 ### HC-SR501 / HC-SR505 (PIR)
@@ -56,21 +58,22 @@ Wiring follows:
 Those PIR sensors must be feeded with 5V, but produce output at 3.3 V, so they does not require other electronic components
 
 Wiring follows:
-| RasPi GPIO pin # | Raspi GPIO pin signal | HC-SR501 pin |
-| :--------------: | :-------------------: | :----------: |
-|        2         |         +5V           |     Vcc      |
-|        6         |         GND           |     GND      |
-|        18        |       GPIO #24        |     OUT      |
+| RasPi GPIO pin # | Raspi GPIO pin signal | Sensor pin |
+| :--------------: | :-------------------: | :--------: |
+|        2         |         +5V           |    Vcc     |
+|        6         |         GND           |    GND     |
+|       18         |       GPIO #24        |    OUT     |
 
 
 ## Compatibility
 
 This Addon was tested on following platforms:
-|   Kodi version  |       Distribution       |             HW             | Works | Branch | Notes |
-| :-------------: | :----------------------: | :------------------------: | :--: | :----: | :---- |
-| Kripton - 17.6 | LibreELEC-RPi.arm-8.2.5  | RasPi v1.2 model B+        |   N   |   -    | It seems that this addon cannot run on Kripton (tested on LE v17.6) because required Rpi-tool module (v8.2, to be manually installed) cause restart of RasPi when GPIO is activated (maybe I will do further investigations) |
-| Leia - 18.9    | LibreELEC-RPi.arm-9.2.6  | RasPi v1.2 model B+        |   Y   |  leia  | Require Rpi-Tools distributed in LibreElec Repository |
-| Matrix - 19.1  | LibreELEC-RPi.arm-10.0.0 | RasPi v4 model B with 4GB  |   Y   | matrix | Require Rpi-Tools distributed in LibreElec Repository |
+|  Kodi version  |       Distribution        |            HW             | Works | Branch  | Notes |
+| :------------: | :-----------------------: | :-----------------------: | :---: | :-----: | :---- |
+| Kripton - 17.6 | LibreELEC-RPi2.arm-8.2.5  | RasPi v1.2 model B+       |   N   |  -      | It seems that this addon cannot run on Kripton (tested on LE v17.6) because required Rpi-tool module (v8.2, to be manually installed) cause restart of RasPi when GPIO is activated (maybe I will do further investigations) |
+| Leia - 18.9    | LibreELEC-RPi2.arm-9.2.6  | RasPi v1.2 model B+       |   Y   |  leia   | Require Rpi-Tools (based on RPi.GPIO) - use python 2.x |
+| Matrix - 19.5  | LibreELEC-RPi4.arm-10.0.6 | RasPi v4 model B with 4GB |   Y   |  matrix | Require Rpi-Tools (based on RPi.GPIO) - use python 3.x |
+| Nexus - 20.3   | LibreELEC-RPi4.arm-11.0.4 | RasPi v4 model B with 4GB |   Y   |  nexus  | Require Rpi-Tools (based on gpiozero) - use python 3.x |
 
 
 ## Installation
@@ -80,7 +83,7 @@ To do so:
 1. download this github repository as .zip
 2. transfer file on host with Kodi (via network, USB memory, etc.)
 3. in addon section choose "Install from .zip file" and browse file location
-   (remember - if not asked - to enable installation of .zip addon from Setings -> Addon -> unknown source)
+   (remember - if not asked - to enable installation of .zip addon from Settings -> Addon -> unknown source)
 
 
 ## Localization
@@ -98,5 +101,7 @@ But, if You use it in a Museum, please send me a photo of location and context!
 ## References
 
 1. [HC-SR04 datasheet](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf)
-2. [HC-SR501 datasheet](https://cdn-learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf)
-3. [HC-SR505 datasheet](https://www.sigmaelectronica.net/wp-content/uploads/2014/06/HC-SR505.pdf)
+2. [SRF05 datasheet](https://www.robot-electronics.co.uk/htm/srf05tech.htm)
+3. [HY-SRF05 datasheet](https://datasheetspdf.com/pdf-down/H/Y/-/HY-SRF05-ETC.pdf)
+4. [HC-SR501 datasheet](https://cdn-learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf)
+5. [HC-SR505 datasheet](https://robu.in/wp-content/uploads/2017/04/datasheet-1.pdf)
