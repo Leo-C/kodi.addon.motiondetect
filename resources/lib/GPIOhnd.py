@@ -9,17 +9,17 @@ import RPi.GPIO as GPIO
 
 class GPIOSensor:
     #read cycle time (msec)
-    READ_CYCLE = 60
+    READ_CYCLE:int = 60
     
     #set GPIO pins
-    PIN_SIGNAL = 23
-    PIN_SENSOR = 24
+    PIN_SIGNAL:int = 23
+    PIN_SENSOR:int = 24
     
-    #last read time (used 
-    LastReadTime = 0.0
+    #last read time (used to store previous read time)
+    LastReadTime:float = 0.0
     
     @staticmethod
-    def init(PIN_SENSOR = 24, PIN_SIGNAL = 23):
+    def init(PIN_SENSOR:int = 24, PIN_SIGNAL:int = 23):
         """ init Sensor PINs and class variables """
         
         #GPIO Mode (BOARD / BCM)
@@ -34,7 +34,7 @@ class GPIOSensor:
         GPIO.setup(GPIOSensor.PIN_SENSOR, GPIO.IN)
     
     @staticmethod
-    def getSRF04distance():
+    def getSRF04distance() -> int:
         """
         return SRF-04 sensor in centimeters
         it ensure that a minimum time passes between consecutive calls (to avoid echo signals)
@@ -42,7 +42,7 @@ class GPIOSensor:
         
         #wait between consecutive reads
         GPIOSensor.setLevel(False)
-        read_interval = time.time() - GPIOSensor.LastReadTime
+        read_interval:float = time.time() - GPIOSensor.LastReadTime
         if read_interval < (GPIOSensor.READ_CYCLE * 0.001):
             time.sleep((GPIOSensor.READ_CYCLE * 0.001) - read_interval)
         
@@ -55,24 +55,24 @@ class GPIOSensor:
         
         # save StartTime
         res = GPIOSensor.waitLevel(GPIO.RISING, 20)
-        StartTime = time.time()
+        StartTime:float = time.time()
         if not res:
             GPIOSensor.LastReadTime = StartTime
             return -1; #if timeout
         
         # save time of arrival
         res = GPIOSensor.waitLevel(GPIO.FALLING, 40) # no response in 36 msec if object is too far
-        StopTime = time.time()
+        StopTime:float = time.time()
         GPIOSensor.LastReadTime = StopTime
         if not res:
             return -1; #if timeout
         
         # time difference between start and arrival
-        TimeElapsed = StopTime - StartTime
+        TimeElapsed:float = StopTime - StartTime
         
         # multiply with the sonic speed (34300 cm/s)
         # and divide by 2, because sensor measure round-trip time
-        distance = round((TimeElapsed * 34300) / 2, 1)
+        distance:int = round((TimeElapsed * 34300) / 2, 1)
         
         if distance < 2 or distance > 400:
             return -1 # out of range (valid range: 2-400 cm)
@@ -89,7 +89,7 @@ class GPIOSensor:
             GPIO.output(GPIOSensor.PIN_SIGNAL, level)
     
     @staticmethod
-    def checkLevel(level=GPIO.HIGH):
+    def checkLevel(level=GPIO.HIGH) -> bool:
         """
         check level of sensor against that specified
         """
@@ -97,7 +97,7 @@ class GPIOSensor:
         return (GPIO.input(GPIOSensor.PIN_SENSOR) == level)
     
     @staticmethod
-    def waitLevel(direction=GPIO.RISING, timeout = 0):
+    def waitLevel(direction=GPIO.RISING, timeout = 0) -> bool:
         """
         wait transition to specified level
         if timeout is specified (in msec) wait; if timeout occurs return False
@@ -122,14 +122,22 @@ class MotionPlayer(xbmc.Player):
     PLAYING_MEDIA = 2
     WAITING_STOP = 3
     
-    STOP_TIME = 0
+    STOP_TIME:int = 0
     
     
-    def init(self, idle_media, media, stop_time = 0): # weird error if constructor is redefined
+    def init(self, idle_media:str, media:str, stop_time:int = 0): # weird error if constructor is redefined
+        """
+        :param idle_media: path of media reproduced when system is idle
+        :type idle_media: str
+        :param media: path of media reproduced when system is triggered
+        :type media: str
+        :param stop_time: is time before stop media in seconds (default 0)
+        :type stop_time: int
+        """
         self.STOP_TIME = stop_time
-        self._start_countdown = 0
-        self._countdown = False
-        self._repeat = False
+        self._start_countdown:float = 0.0
+        self._countdown:bool = False
+        self._repeat:bool = False
         
         if idle_media != "":
             self._idle = idle_media
@@ -141,17 +149,16 @@ class MotionPlayer(xbmc.Player):
         self._setState(MotionPlayer.STOPPED)
         #self.playIdleScreen()
     
-    def setRepeat(self, on):
+    def setRepeat(self, on:bool):
         self._repeat = on
     
     def playIdleScreen(self):
-        xbmc.log("[script.media.motiondetect] Starting Idle Media '%s'" % self._idle, xbmc.LOGINFO)
+        xbmc.log("[script.media.motiondetect] Starting Idle Media '{self._idle}'", xbmc.LOGINFO)
         self._countdown = False
         self.play(self._idle)
         xbmc.executebuiltin("PlayerControl(RepeatAll)")
         self._setState(MotionPlayer.PLAYING_IDLE)
         while True: # wait media start
-            xbmc.log("[script.media.motiondetect] TP10", xbmc.LOGDEBUG)
             if self.isPlaying():
                 break
             else:
@@ -163,7 +170,7 @@ class MotionPlayer(xbmc.Player):
             xbmcgui.Dialog().notification("", msg, xbmcgui.NOTIFICATION_WARNING, 5000)
             return
         
-        xbmc.log("[script.media.motiondetect] Starting Media '%s'" % self._media, xbmc.LOGINFO)
+        xbmc.log("[script.media.motiondetect] Starting Media '{self._media}'", xbmc.LOGINFO)
         self._countdown = False
         if not self._repeat:
             xbmc.executebuiltin("PlayerControl(RepeatOff)")
@@ -172,7 +179,6 @@ class MotionPlayer(xbmc.Player):
             xbmc.executebuiltin("PlayerControl(RepeatAll)")
         self._setState(MotionPlayer.PLAYING_MEDIA)
         while True: # wait media start
-            xbmc.log("[script.media.motiondetect] TP11", xbmc.LOGDEBUG)
             if self.isPlaying():
                 break
             else:
@@ -221,7 +227,7 @@ class DistanceInteraction:
     """
     handle Sensor that measure distance, with 2 thresholds (and hysteresis) to start / stop video
     """
-    def __init__(self, start_threshold, stop_threshold, idle_screen, media, stop_time = 0):
+    def __init__(self, start_threshold:float, stop_threshold:float, idle_screen:str, media:str, stop_time:int = 0):
         """
         :param start_threshold: is minimum distance (in cm) to start media
         :type start_threshold: float
@@ -234,8 +240,8 @@ class DistanceInteraction:
         :param stop_time: is time before stop media in seconds (default 0)
         :type stop_time: int
         """
-        self.TH_START = start_threshold
-        self.TH_STOP = stop_threshold
+        self.TH_START:float = start_threshold
+        self.TH_STOP:float = stop_threshold
         self._player = MotionPlayer()
         self._player.init(idle_screen, media, stop_time)
         self._player.setRepeat(True)
@@ -282,12 +288,12 @@ class PresenceInteraction:
     """
     LEVEL = GPIO.HIGH
     
-    def __init__(self, idle_screen, media):
+    def __init__(self, idle_screen:str, media:str):
         """
         :param idle_screen: is filepath for idle screen (image, media)
         :type idle_screen: str
         :param media: is filepath for video to play
-        :type video: str
+        :type media: str
         """
         self._player = MotionPlayer()
         self._player.init(idle_screen, media)

@@ -11,21 +11,20 @@ from resources.lib.GPIOhnd import GPIOSensor, DistanceInteraction, PresenceInter
 
 # get all Settings
 this_addon = xbmcaddon.Addon()
-sensor_type = int(this_addon.getSetting("sensor_type"))
-pin_trigger = -1
+sensor_type:int = int(this_addon.getSetting("sensor_type"))
+pin_trigger:int = -1
 if sensor_type == 0: # Ultrasonic
     pin_trigger = int(this_addon.getSetting("pin_trigger"))
-pin_sensor = int(this_addon.getSetting("pin_sensor"))
-play_dist = int(this_addon.getSetting("play_dist"))
-stop_dist = int(this_addon.getSetting("stop_dist"))
+pin_sensor:int = int(this_addon.getSetting("pin_sensor"))
+play_dist:int = int(this_addon.getSetting("play_dist"))
+stop_dist:int = int(this_addon.getSetting("stop_dist"))
 stop_dist = max(play_dist, stop_dist) #to ensure that stop_dist >= play_dist
-stop_time = int(this_addon.getSetting("stop_time"))
-idle_media_blank =this_addon.getSetting("idle_media_blank")
+stop_time:int = int(this_addon.getSetting("stop_time"))
+idle_media_blank:str =this_addon.getSetting("idle_media_blank")
+idle_media_filepath:str = "" # blank screen
 if idle_media_blank == "false":
     idle_media_filepath = this_addon.getSetting("idle_media")
-else:
-    idle_media_filepath = "" # blank screen
-video_filepath = this_addon.getSetting("media")
+video_filepath:str = this_addon.getSetting("media")
 
 # init GPIO pins for sensor
 GPIOSensor.init(pin_sensor, pin_trigger)
