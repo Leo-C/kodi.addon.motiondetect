@@ -92,7 +92,7 @@ This Addon was tested on following platforms:
 
 Unless this addon was not included in a Kodi repository, must be installed manually.
 To do so:
-1. download this github repository as .zip
+1. download this github repository as .zip (see [releases](https://github.com/Leo-C/kodi.addon.motiondetect/releases))
 2. transfer file on host with Kodi (via network, USB memory, etc.)
 3. in addon section choose "Install from .zip file" and browse file location
    (remember - if not asked - to enable installation of .zip addon from Settings -> Addon -> unknown source)
