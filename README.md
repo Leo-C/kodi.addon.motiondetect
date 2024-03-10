@@ -23,13 +23,11 @@ In Setting Page some items help to customize behavior of Addon:
 * **Idle Media Blank**: if activated, in idle mode a black screen is shown
 * **Idle Media Content**: if previuos setting is not activated, in idle mode a custom media file can be reproduced in loop
 * **Media to Play**: choose media to reproduce when someone approach sensor
-* **Start Test**: show a test dialog for snsor, useful to tune previous settings
-* **Stop Addon**: useful to stop this addon during tests
+* **Pause**: pause service (sampled data is shown below, but not trigger media start)
+* **distance**: distance (in cm) for distance sensor; 0 otherwise
+* **percentage**: percentage of sensing
 
 To start this addon, use instead default *Open* button in Addon Page.
-
-If you want to start this addon at Kodi boot, I suggest to use [Kodi Autoplay Addon](https://github.com/leo-c/service.autoexec.addon)
-(check correct branch for your Kodi version)
 
 
 ## Hardware
