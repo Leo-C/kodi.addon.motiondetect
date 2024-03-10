@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="script.media.motiondetect" version="0.9.0" name="Motion-Detect Media Player" provider-name="leo-c">
+<addon id="script.media.motiondetect" version="1.0.0" name="Motion-Detect Media Player" provider-name="leo-c">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="virtual.rpi-tools" version="9.0.0"/>
+    <import addon="virtual.rpi-tools" version="9.0"/>
   </requires>
   <extension point="xbmc.python.script" library="addon.py">
 	<provides>video audio</provides>
@@ -19,8 +19,11 @@
 	  <icon>resources/icon.png</icon>
 	</assets>
 	<news>
-v0.1.0  (2021-07-26)
-- Initial release. It works under Kodi 18
+v0.9.0  (2021-07-26)
+Initial release. It should works with python 2.x and Kodi 17
+
+v1.0.0  (2021-07-26)
+works with python 2.x and  Kodi 18
 	</news>
   </extension> 
 </addon>
